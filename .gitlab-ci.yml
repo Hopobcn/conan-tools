@@ -1,0 +1,22 @@
+
+variables:
+  GIT_DEPTH: "3"
+  CONAN_USER_HOME: "$CI_PROJECT_DIR"
+  CONAN_REVISIONS_ENABLED: "1"
+  CONAN_SYSREQUIRES_SUDO: "0"
+
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  image: python:3
+  only:
+    - tags
+  before_script:
+    - conan user
+    - conan config install https://github.com/hopobcn/conan-config.git
+  script:
+    - conan export .
+    - conan inspect -a version .
+
