@@ -11,8 +11,6 @@ stages:
 export:
   stage: export
   image: python:3
-  only:
-    - tags
   before_script:
     - pip3 install conan
     - conan user
