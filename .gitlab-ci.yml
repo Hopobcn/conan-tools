@@ -20,7 +20,7 @@ export:
     - conan inspect -a version .
   artifacts:
     paths:
-    - $HOME/.conan/data/conan-tools
+    - $HOME/.conan/data/conan-tools/*
 
 deploy:
   stage: deploy
